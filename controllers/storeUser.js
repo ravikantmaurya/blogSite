@@ -7,8 +7,11 @@ module.exports = async (req, res)=>{
         }
     })
     .catch((err)=>{
+        // console.log(`err: ${JSON.stringify(err.errors)}`)
         if(err){
-            return res.redirect('auth/register')
+            const registrationErrors = Object.keys(err.errors).map(key => err.errors[key].message)
+            req.flash('registrationErrors', registrationErrors)
+            return res.redirect('/auth/register')
         }
     })
 }
