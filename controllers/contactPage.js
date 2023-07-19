@@ -1,3 +1,7 @@
 module.exports = (req, res) => {
-    res.render('contact')
+    const auth = req.session.userId
+    
+    res.render('contact',{
+        auth
+    })
 }

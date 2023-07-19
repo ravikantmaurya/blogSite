@@ -3,7 +3,6 @@ const Post = require('../database/models/Post')
 
 module.exports = async (req, res) =>{
     const {image} = req.files
-    console.log(`image: ${image}`)
     image.mv(path.resolve(__dirname, '..' , 'public/posts', image.name), async (err)=>{
         await Post.create({
             ...req.body,

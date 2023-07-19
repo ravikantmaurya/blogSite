@@ -1,3 +1,7 @@
 module.exports = (req, res) => {
-    res.render('about')
+    const auth = req.session.userId
+    
+    res.render('about',{
+        auth
+    })
 }
